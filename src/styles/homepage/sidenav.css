@@ -1,0 +1,102 @@
+.Sidenav {
+    grid-column: 1 / span 1;
+    grid-row: 2 / -1;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    color: var(--mild-grey);
+}
+
+.sidenav_container {
+    padding: 2rem 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.sidenav_top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidenav_menu {
+    padding: 1rem 6rem 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--mild-grey);
+}
+.sidenav_menu:hover {
+    background-color: var(--accent-mild);
+}
+.sidenav_menu_icon {
+    color: var(--secondary);
+}
+.sidenav_menu_title {
+    font-size: 1.1rem;
+    transition: all .4s ease;
+    flex-basis: 40%;
+    width: max-content;
+}
+.active_menu {
+    background-color: var(--accent-light);
+}
+.active_menu:hover {
+    background-color: var(--accent-light);
+}
+.active_menu .sidenav_menu_icon {
+    color: var(--mild-grey);
+}
+.sidenav_bottom {
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.sidenav_user {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    cursor: pointer;
+    color: var(--mild-grey);
+}
+.sidenav_user_name {
+    font-size: .95rem;
+}
+.sidenav_user_name:hover {
+    color: var(--secondary);
+}
+.sidenav_user_img {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 100%;
+}
+.exit_icon {
+    cursor: pointer;
+    padding: .5rem;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.exit_icon:hover {
+    background-color: var(--light-green);
+}
+
+.title_hidden .sidenav_menu_title, .title_hidden .sidenav_user {
+    display: none;
+}
+.title_hidden .sidenav_menu {
+    padding-right: 1rem;
+    width: max-content;
+}

@@ -1,0 +1,16 @@
+.CreateNotes {
+    grid-row: 1 / span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.takeNotes_wrapper {
+    border: 1px solid var(--grey);
+    color: var(--light-grey);
+    padding: 1rem;
+    border-radius: .5rem;
+    width: 35rem;
+    text-align: start;
+    cursor: text;
+    font-weight: 500;
+}

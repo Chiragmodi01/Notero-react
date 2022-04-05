@@ -1,0 +1,7 @@
+.HomeMain {
+    grid-column: 2 / -1;
+    grid-row: 2 / -1;
+    display: grid;
+    grid-template-rows: auto 2fr;
+    padding: 2rem;
+}

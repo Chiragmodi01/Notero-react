@@ -1,0 +1,13 @@
+:root {
+    --primary : #06603b; /* green */
+    --dark-green : #064f32;
+    --light-green: #2a7857;
+    --secondary: #4abf8e; /* mild green */
+    --grey: #94b8c9;
+    --mild-grey: #f9fbfc;
+    --light-grey: #c6d9e2;
+    --white: #FFFFFF;
+    --accent: #00ffff;
+    --accent-light: #00ffff33; /* aqua blue */
+    --accent-mild: rgba(0, 255, 255, 5%); /* aqua blue */
+}

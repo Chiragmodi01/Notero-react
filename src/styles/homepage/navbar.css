@@ -1,0 +1,86 @@
+.Navbar {
+    height: max-content;
+    grid-column: 1 / -1;
+    grid-row: 1 / span 1;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: .5rem 2rem;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid var(--grey);
+}
+
+.navbar_left {
+    width: 15rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.navbar_right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.brandname {
+    font-size: 1.6rem;
+    color: var(--mild-grey);
+}
+.notero-icon {
+    height: 2rem;
+    width: 2rem;
+    padding-right: 1rem;
+}
+.notero-icon path {
+    stroke: var(--accent);
+}
+
+/* searchbox */
+.searchbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.search-input {
+    background-color: var(--secondary);
+    padding: 13px 40px;
+    width: 30rem;
+    border-radius: .5rem;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+
+    color: var(--primary);
+}
+.search-input:focus {
+    background-color: var(--mild-grey);
+    transition: all .2s;
+}
+.filter-icon {
+    position: absolute;
+    right: 10px;
+    color: var(--primary);
+    cursor: pointer;
+}
+.search-icon {
+    position: absolute;
+    left: 10px;
+    color: var(--primary);
+    cursor: pointer;
+}
+.ham-menu_icon {
+    color: var(--mild-grey);
+    cursor: pointer;
+    padding-left: 2rem;
+    padding-right: 1rem;
+}
+.ham-menu_icon:hover {
+    background-color: var(--accent-light);
+    padding: .5rem;
+    margin-right: .5rem;
+    margin-left: 1.5rem;
+    border-radius: 100%;
+}
