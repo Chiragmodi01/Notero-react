@@ -5,6 +5,40 @@
   text-align: center;
   height: 100vh;
   font-family: 'Roboto', sans-serif;
+  display: grid;
+  grid-template-rows: auto 2fr;
+  grid-template-columns: auto 1fr;
+  background-color: var(--primary);
+}
+
+.App-light {
+  --primary: #FFF;
+  --secondary: rgba(128, 128, 128, 0.781);
+  --light-green: #c6d9e2b0;
+  --mild-green: #33926a23;
+  --mild-grey: #06603b;
+  --grey: #2a7857;
+  --light-grey: #064f32d8;
+  --shadow-green: #06603a44;
+  --accent: #00ffff;
+  --accent-light: #00ffff6c;
+  --accent-mild: #00ffff1f ;
+}
+.App-light .takeNotes_wrapper, .App-light .createNote_wrapper{
+  border: none;
+  color: var(--light-grey);
+}
+.App-light .search-input::placeholder{
+  color: var(--grey);
+}
+.App-light .Navbar {
+  border-color: #c6d9e2;
+}
+.App-light .NoNotes_desc {
+  color: grey;
+}
+.App-light .ham-menu_icon:hover {
+  background-color: #c6d9e25b;
 }
 
 .App-logo {
@@ -57,4 +91,17 @@
 
 iframe {
   pointer-events: none;
+}
+
+::-webkit-scrollbar{
+  width: 0.7rem;
+  background-color: var(--primary);
+}
+::-webkit-scrollbar-thumb{
+  background: var(--light-green);
+  border-radius: 0px;
+  filter: none;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: var(--mild-green);
 }

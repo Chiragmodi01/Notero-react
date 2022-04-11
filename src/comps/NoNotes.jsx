@@ -1,14 +1,17 @@
 import React from 'react'
+import { useNote } from '../helpers/context/note-context';
 import '../styles/homepage/no_notes.css'
-import { notero } from '../assets/assets';
+import { notero, noteroLight } from '../assets/assets';
 
-function HomeMainPlaceholder() {
+function NoNotesPlaceholder() {
+  const { utilsState } = useNote();
+
   return (
     <div className="NoNotes">
-        <img src={notero} alt="NoNotes_logo" className='NoNotes_notero_logo'/>
+        <img src={utilsState.darkTheme ? notero: noteroLight} alt="NoNotes_logo" className='NoNotes_notero_logo'/>
         <h2 className="NoNotes_desc">Notes you add appear here</h2>
     </div>
   )
 }
 
-export default HomeMainPlaceholder
+export default NoNotesPlaceholder
