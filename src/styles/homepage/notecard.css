@@ -1,0 +1,52 @@
+.NoteCard {
+    border: 1px solid var(--grey);
+    padding: .5rem;
+    font-size: .9rem;
+    color: var(--light-grey);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 15rem;
+    min-height: 8rem;
+    border-radius: .5rem;
+    max-height: auto;
+    box-sizing: border-box;
+}
+.noteCard_head {
+    font-weight: 500;
+    justify-content: space-between;
+}
+.noteCard_head, .noteCard_mid {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 .5rem;
+    max-height: auto;
+    box-sizing: border-box;
+    margin: 0;
+    padding-left: .5rem;
+}
+.noteCard_mid {
+    justify-content: flex-start;
+    text-align: start;
+    line-height: 1rem;
+}
+.noteCard_bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    max-height: auto;
+    box-sizing: border-box;
+    margin: 0;
+}
+.noteCard_icon {
+    padding: .5rem;
+    cursor: pointer;
+}
+.noteCard_icon:hover {
+    background-color: var(--light-green);
+    border-radius: 100%;
+}

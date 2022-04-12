@@ -1,8 +1,11 @@
 :root {
     --primary : #06603b; /* green */
     --dark-green : #064f32;
+    --shadow-green:#05432a;
     --light-green: #2a7857;
+    --mild-green: #33926b;
     --secondary: #4abf8e; /* mild green */
+    --dark-grey: #6599b1;
     --grey: #94b8c9;
     --mild-grey: #f9fbfc;
     --light-grey: #c6d9e2;

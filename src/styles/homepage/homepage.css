@@ -1,7 +1,4 @@
 .Homepage {
-    display: grid;
-    grid-template-rows: auto 2fr;
-    grid-template-columns: auto 1fr;
     height: 100%;
     background-color: var(--primary);
 }
