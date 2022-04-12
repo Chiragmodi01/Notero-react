@@ -29,8 +29,6 @@ function NoteProvider({ children }) {
     const [notesState, notesDispatch] = useReducer(notesReducer, {
         notes: [],
         filteredNotes: [],
-        // pinnedNotes: [],
-        // unpinnedNotes: [],
         archives: [],
         labels: [],
         trash: []

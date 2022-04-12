@@ -1,6 +1,4 @@
 import React, { useState, useRef } from 'react'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import '../styles/homepage/create_notes.css'
 import { MdOutlineArchive, MdOutlineLabel } from 'react-icons/md';
 import { IoColorPaletteOutline } from 'react-icons/io5';
@@ -25,15 +23,7 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
   const addNoteHandler = (e) => {
     e.preventDefault();
     if(note.desc === ""){
-      toast.error("Note's Content cannot be empty!", {
-        position: "bottom-left",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
+      alert("Note's Content cannot be empty!");
     } else if(note.title === "") {
       setNote({...note, title: "Untitled"});
     } else {
@@ -87,17 +77,6 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
             </div>
           </div>
         </form>
-        <ToastContainer
-          position="bottom-left"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={true}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
     </div>
   )
 }

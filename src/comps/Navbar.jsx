@@ -1,8 +1,5 @@
 import React, { useState, useRef } from 'react'
 import '../styles/homepage/navbar.css'
-import { ToastContainer, toast } from 'react-toastify';
-import { Flip } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { BsFilter } from 'react-icons/bs';
 import { FiSearch } from 'react-icons/fi';
 import { GrDocumentNotes } from 'react-icons/gr';
@@ -27,16 +24,7 @@ function Navbar( ) {
     utilsDispatch({type: 'CHANGE_THEME'})
     const msgLight = "Ew, you're using light mode!";
     const msgDark = "God bless your precious eyes!";
-    toast(utilsState.darkTheme ? msgLight: msgDark, {
-      position: "top-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      transition: Flip
-      });
+    console.log(utilsState.darkTheme ? msgLight: msgDark);
   }
     
   return (
@@ -55,18 +43,6 @@ function Navbar( ) {
         {utilsState.darkTheme && <BsSun title="Light theme" size='1.7em' className='ham-menu_icon theme' onClick={() =>themeClickHandler()}/>}
         {!utilsState.darkTheme && <BsMoon title="Dark theme" size='1.7em' className='ham-menu_icon theme' onClick={() => themeClickHandler()}/>}
         </div>
-        <ToastContainer
-          position="bottom-left"
-          autoClose={1500}
-          hideProgressBar={false}
-          newestOnTop={true}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          transition={Flip}
-        />
     </div>
   )
 }

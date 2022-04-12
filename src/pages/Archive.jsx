@@ -6,4 +6,4 @@ function Archive() {
   )
 }
 
-export default Archive
+export {Archive}

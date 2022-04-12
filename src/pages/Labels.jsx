@@ -6,4 +6,4 @@ function Labels() {
   )
 }
 
-export default Labels
+export {Labels}

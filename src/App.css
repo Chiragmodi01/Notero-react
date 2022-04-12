@@ -93,6 +93,10 @@ iframe {
   pointer-events: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 ::-webkit-scrollbar{
   width: 0.7rem;
   background-color: var(--primary);

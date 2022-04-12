@@ -22,8 +22,8 @@ function NoteCard({ id, title, desc, pin }) {
     <div className='NoteCard' key={id}>
         <div className="noteCard_head">
           <h3 className='noteCard_head_title'>{title}</h3>
-          { pin && <BsPinFill size="1.4em" className='noteCard_icon' title="Unpin note" onClick={() => notePinToggler()}/>}
-          { !pin && <BsPin size="1.4em" className='noteCard_icon' title="Pin note" onClick={() => notePinToggler()}/>}
+          { pin ? <BsPinFill size="1.4em" className='noteCard_icon' title="Unpin note" onClick={() => notePinToggler()}/> :
+            <BsPin size="1.4em" className='noteCard_icon' title="Pin note" onClick={() => notePinToggler()}/>}
         </div>
         <div className="noteCard_mid">
         <h3 className='noteCard_head_desc'>{desc}</h3>

@@ -1,10 +1,7 @@
 import "./App.css";
-import React, { useState } from 'react'; 
+import React from 'react'; 
 import Mockman from "mockman-js";
-import Homepage from "./pages/Homepage";
-import Labels from "./pages/Labels";
-import Archive from "./pages/Archive";
-import Trash from "./pages/Trash";
+import {Homepage, Labels, Archive, Trash} from "./pages/index";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./comps/Navbar";
 import Sidenav from "./comps/Sidenav";

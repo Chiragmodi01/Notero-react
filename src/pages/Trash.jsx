@@ -6,4 +6,4 @@ function Trash() {
   )
 }
 
-export default Trash
+export {Trash}

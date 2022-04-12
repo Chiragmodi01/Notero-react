@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNote } from '../helpers/context/note-context';
 import '../styles/homepage/no_notes.css'
-import { notero, noteroLight } from '../assets/assets';
+import { notero, noteroLight } from '../assets/index';
 
 function NoNotesPlaceholder() {
   const { utilsState } = useNote();
