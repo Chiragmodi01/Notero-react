@@ -19,6 +19,7 @@ function NoteProvider({ children }) {
     useEffect(() => {
         getNotesService(notesDispatch);
     }, [])
+
     
     const [utilsState, utilsDispatch] = useReducer(utilsReducer, {
         hideAside: false,

@@ -31,7 +31,7 @@ function Sidenav( ) {
             <MdOutlineDelete size='1.3em' className='sidenav_menu_icon' />
             <h2 className="sidenav_menu_title">Trash</h2>
           </NavLink>
-          <div className="sidenav_menu">
+          <div className="sidenav_menu cursor-block">
             <BiUser size='1.3em' className='sidenav_menu_icon' />
             <h2 className="sidenav_menu_title">Profile</h2>
           </div>

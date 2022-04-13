@@ -35,12 +35,16 @@
 }
 .noteCard_bottom {
     width: 100%;
-    display: flex;
     align-items: center;
     justify-content: flex-start;
     max-height: auto;
     box-sizing: border-box;
     margin: 0;
+    display: flex;
+    visibility: hidden;
+}
+.NoteCard:hover .noteCard_bottom {
+    visibility: visible;
 }
 .noteCard_icon {
     padding: .5rem;

@@ -6,7 +6,7 @@ import NoNotes from './NoNotes';
 import NoteCard from './NoteCard';
 
 function HomeMain( ) {
-  const { notesState, notesDispatch, search,  } = useNote()
+  const { notesState, notesDispatch, search, setNote } = useNote()
 
   const [createNote, setCreateNote] = useState(false);
   const createNoteRef = useRef(null)
@@ -18,8 +18,16 @@ function HomeMain( ) {
 
   
   useEffect(() => {
-    notesDispatch({type: 'SEARCH_NOTE', payload: search})
+    search.length !== 0 && notesDispatch({type: 'SEARCH_NOTE', payload: search})
+    console.log('search note useEffect running!')
   }, [search])
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      setNote({title: "", desc: "", pin: false, editedAt: ""})
+    }, 500);
+  }, [notesState.notes])
 
 
   return (
