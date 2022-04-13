@@ -6,7 +6,7 @@ import { AiOutlineClear } from 'react-icons/ai'
 import { BsPin, BsPinFill } from 'react-icons/bs'
 import TextareaAutosize from 'react-textarea-autosize';
 import { useNote } from '../helpers/context/note-context';
-import { postNoteService } from '../helpers/services/postNoteService';
+import { postNoteService, archiveNoteService } from '../helpers/services/index';
 
 function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
 
@@ -21,13 +21,13 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
 
   
   const addNoteHandler = (e) => {
+    const updatedTitle = note.title.length === 0 ? 'Untitled' : note.title;
+
     e.preventDefault();
     if(note.desc === ""){
-      alert("Note's Content cannot be empty!");
-    } else if(note.title === "") {
-      setNote({...note, title: "Untitled"});
+      alert("Note Content cannot be empty!");
     } else {
-      postNoteService(notesDispatch, {...note, editedAt: new Date()}, setNote)
+      postNoteService(notesDispatch, {...note, title: updatedTitle, editedAt: new Date()}, setNote)
       setCreateNote(false);
     }
   }
@@ -45,6 +45,13 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
       window.confirm('Clear note? All content inside this note will be Cleared.') &&
       setNote({title: '', desc: ''})
     }
+  }
+
+  const archiveNoteHandler = () => {
+    const updatedTitle = note.title.length === 0 ? 'Untitled' : note.title;
+    
+    console.log('Your note moved to archive');
+    archiveNoteService(notesDispatch, {...note, title: updatedTitle, editedAt: new Date()}, setNote)
   }
 
 
@@ -67,7 +74,7 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
           <div className="createNote_bottom">
             <div className="createNotes_bottom_left">
               <IoColorPaletteOutline className='createNote_icon' size='1.3em' title="Background options"/>
-              <MdOutlineArchive className='createNote_icon' size='1.3em' title="Archive"/>
+              <MdOutlineArchive className='createNote_icon' size='1.3em' title="Archive" onClick={archiveNoteHandler}/>
               <AiOutlineClear className='createNote_icon' size='1.3em' title="Clear note" onClick={(e) => clearNote(e)}/>
               <MdOutlineLabel className='createNote_icon' size='1.3em' title="Add label"/>
             </div>

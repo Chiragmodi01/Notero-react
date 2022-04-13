@@ -5,10 +5,11 @@ import { IoColorPaletteOutline } from 'react-icons/io5';
 import { BsPin, BsPinFill } from 'react-icons/bs'
 import { useNote } from '../helpers/context/note-context';
 import GetCurrentDate from '../utils/getDate';
+import { archiveNoteService, deleteNoteService } from '../helpers/services/index';
 
-function NoteCard({ id, title, desc, pin }) {
+function NoteCard({ id, title, desc, pin, note }) {
 
-  const { notesState, notesDispatch } = useNote();
+  const { notesState, notesDispatch, setNote } = useNote();
 
 
   const notePinToggler = () => {
@@ -16,6 +17,16 @@ function NoteCard({ id, title, desc, pin }) {
       return item._id === id ? {...item, pin: !item.pin} : item
     })
     notesDispatch({type: 'UPDATE_NOTE', payload: payload})
+  }
+
+  const deleteNoteHandler = () => {
+    console.log('Your note moved to trash');
+    deleteNoteService(notesDispatch, {...note, editedAt: new Date()}, setNote)
+  }
+
+  const archiveNoteHandler = () => {
+    console.log('Your note moved to archive');
+    archiveNoteService(notesDispatch, {...note, editedAt: new Date()}, setNote)
   }
 
   return (
@@ -30,9 +41,9 @@ function NoteCard({ id, title, desc, pin }) {
         </div>
         <div className="noteCard_bottom">
           <IoColorPaletteOutline title="Background options" className='noteCard_icon' size='1.3em' />
-          <MdOutlineArchive title="Archive" className='noteCard_icon' size='1.3em' />
+          <MdOutlineArchive title="Archive" className='noteCard_icon' size='1.3em' onClick={archiveNoteHandler}/>
           <MdOutlineLabel title="Add label" className='noteCard_icon' size='1.3em' />
-          <MdOutlineDelete title="Delete" className='noteCard_icon' size='1.3em' />
+          <MdOutlineDelete title="Delete" className='noteCard_icon' size='1.3em' onClick={deleteNoteHandler}/>
           <MdOutlineEdit title="Edit note" className='noteCard_icon' size='1.3em' />
           <MdOutlineDateRange title={ <GetCurrentDate />} className='noteCard_icon' size='1.3em'/>
         </div>

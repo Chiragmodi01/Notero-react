@@ -22,6 +22,9 @@
     display: flex;
     flex-direction: column;
 }
+.sidenav_menu.cursor-block {
+    cursor: no-drop;
+}
 
 .sidenav_menu {
     padding: 1rem 6rem 1rem 2rem;
@@ -33,6 +36,7 @@
     cursor: pointer;
     color: var(--mild-grey);
 }
+
 .sidenav_menu:hover {
     background-color: var(--accent-mild);
 }

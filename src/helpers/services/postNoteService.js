@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const postNoteService = async(notesDispatch, note, setNote) => {
-    const encodedToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI4ZTc5YTI1Ni01ZmQ2LTQwZTktYmYwYS04NGUyNGE5MDNmYzAiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.tPP0Mb50-2ihtbeWd7PUpf1_pkzVQjmcxNVBIuqzFlU"
+    const encodedToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI0YTU1YWE3ZC1jMmE3LTQxNzctOTQ0OS0wYTk4YTkyZTRjMWEiLCJlbWFpbCI6ImNocnNpYnJvd25AZ21haWwuY29tIn0.8HrZ73p8GFVl2khCDfFFq7arBzwlZdRsyL_2mG3aBSI"
 
     const Headers = { authorization: encodedToken}
 
