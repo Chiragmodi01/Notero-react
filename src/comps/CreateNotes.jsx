@@ -1,34 +1,39 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import '../styles/homepage/create_notes.css'
-import { MdOutlineArchive, MdOutlineLabel } from 'react-icons/md';
+import { MdOutlineLabel } from 'react-icons/md';
 import { IoColorPaletteOutline } from 'react-icons/io5';
 import { AiOutlineClear } from 'react-icons/ai'
 import { BsPin, BsPinFill } from 'react-icons/bs'
 import TextareaAutosize from 'react-textarea-autosize';
 import { useNote } from '../helpers/context/note-context';
-import { postNoteService, archiveNoteService } from '../helpers/services/index';
+import { postNoteService, editNoteService } from '../helpers/services/index';
+import BackgroundOptions from '../comps/BackgroundOptions';
 
 function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
 
-  const { notesState, notesDispatch, note, setNote, utilsState, utilsDispatch } = useNote();
+  const fromCreateNote = true;
+
+  const { notesDispatch, note, setNote, utilsState, utilsDispatch } = useNote();
 
   const autoFocusRef = useRef(null);
 
   const closeNoteHandler = (e) => {
     e.preventDefault();
     setCreateNote(false);
+    utilsDispatch({type: 'HIDE_BG_OPTIONS'});
   }
 
   
   const addNoteHandler = (e) => {
-    const updatedTitle = note.title.length === 0 ? 'Untitled' : note.title;
-
     e.preventDefault();
+    const updatedTitle = note?.title?.length === 0 ? 'Untitled' : note.title;
+
     if(note.desc === ""){
       alert("Note Content cannot be empty!");
     } else {
-      postNoteService(notesDispatch, {...note, title: updatedTitle, editedAt: new Date()}, setNote)
+      postNoteService(notesDispatch, {...note, title: updatedTitle, editedAt: new Date()})
       setCreateNote(false);
+      utilsDispatch({type: 'HIDE_BG_OPTIONS'});
     }
   }
   
@@ -47,12 +52,25 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
     }
   }
 
-  const archiveNoteHandler = () => {
-    const updatedTitle = note.title.length === 0 ? 'Untitled' : note.title;
-    
-    console.log('Your note moved to archive');
-    archiveNoteService(notesDispatch, {...note, title: updatedTitle, editedAt: new Date()}, setNote)
+  const showBgOptionsHandler = () => {
+    utilsDispatch({type: 'SHOW_BG_OPTIONS'})
   }
+
+  const addEditedNote = (e) => {
+    const updatedTitle = note.title.length === 0 ? 'Untitled' : note.title;
+
+    e.preventDefault();
+    if(note.desc === ""){
+      alert("Note Content cannot be empty!");
+    } else {
+      console.log('Note succesfully edited!')
+      editNoteService(notesDispatch, {...note, title: updatedTitle, editedAt: new Date()})
+      setCreateNote(false);
+      utilsDispatch({type: 'SHOW_BG_OPTIONS'})
+    }
+  }
+
+  console.log(createNote)
 
 
   return (
@@ -60,7 +78,7 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
         <div className={createNote ? 'no-display' : 'takeNotes_wrapper'} value={createNote} onClick={openCreateNoteHandler}>
             <h4 className="takeNotes_text">Take a note...</h4>
         </div>
-        <form className={createNote ? 'createNote_wrapper' : 'no-display'} onSubmit={(e) => addNoteHandler(e)}>
+        <form style={{backgroundColor: note.color}}  className={createNote ? 'createNote_wrapper' : 'no-display'} onSubmit={(e) => { e.preventDefault(); note.edit ? addEditedNote(e) : addNoteHandler(e)}}>
           <div className="createNote_head">
           <TextareaAutosize value={note.title} onChange={(e) => setNote({...note, title : e.target.value})} name="title" className="createNote_title" placeholder='Title...' />
           { note.pin ?
@@ -73,8 +91,10 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
           </div>
           <div className="createNote_bottom">
             <div className="createNotes_bottom_left">
-              <IoColorPaletteOutline className='createNote_icon' size='1.3em' title="Background options"/>
-              <MdOutlineArchive className='createNote_icon' size='1.3em' title="Archive" onClick={archiveNoteHandler}/>
+              <span>
+                <IoColorPaletteOutline className='createNote_icon' size='1.3em' title="Background options" onClick={showBgOptionsHandler}/>
+                <BackgroundOptions showBgOptions={utilsState.showBgOptions} fromCreateNote={fromCreateNote} note={note}/>
+              </span>
               <AiOutlineClear className='createNote_icon' size='1.3em' title="Clear note" onClick={(e) => clearNote(e)}/>
               <MdOutlineLabel className='createNote_icon' size='1.3em' title="Add label"/>
             </div>

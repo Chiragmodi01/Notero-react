@@ -6,9 +6,9 @@ import { useNote } from '../helpers/context/note-context';
 import GetCurrentDate from '../utils/getDate';
 import { postNoteService } from '../helpers/services';
 
-function NoteCardTrash({ id, title, desc, pin, note }) {
+function NoteCardTrash({ id, title, desc, pin, note, color }) {
 
-  const { notesDispatch, setNote } = useNote();
+  const { notesDispatch} = useNote();
 
 
   const deleteForeverHandler = () => {
@@ -18,12 +18,12 @@ function NoteCardTrash({ id, title, desc, pin, note }) {
 
   const restoreNoteHandler = () => {
     console.log('Note succesfully restored!');
-    postNoteService(notesDispatch, {...note, editedAt: new Date()}, setNote)
+    postNoteService(notesDispatch, {...note, editedAt: new Date()})
     notesDispatch({type: 'RESTORE_NOTE', payload: note})
   }
 
   return (
-    <div className='NoteCard' key={id}>
+    <div className='NoteCard' key={id} style={{backgroundColor: color}}>
         <div className="noteCard_head">
           <h3 className='noteCard_head_title'>{title}</h3>
           { pin ? <BsPinFill size="1.4em" className='noteCard_icon' title="Unpin note"/> :

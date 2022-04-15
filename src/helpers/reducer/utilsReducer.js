@@ -4,14 +4,15 @@ const utilsReducer = (utilsState, { type }) => {
         case'HIDE_ASIDE':
         return { ...utilsState, hideAside: !utilsState.hideAside}
 
-        // case'PIN_NOTE':
-        // return { ...utilsState, pinNote: true}
-
-        // case'UNPIN_NOTE':
-        // return { ...utilsState, pinNote: false}
-
         case'CHANGE_THEME':
         return {...utilsState, darkTheme: !utilsState.darkTheme}
+
+        case'SHOW_BG_OPTIONS':
+        return {...utilsState, showBgOptions: !utilsState.showBgOptions}
+        
+        case'HIDE_BG_OPTIONS':
+        return {...utilsState, showBgOptions: false}
+
     }
 
 }

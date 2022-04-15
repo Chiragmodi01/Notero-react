@@ -1,0 +1,66 @@
+.backgroundOptions.hidden{
+    display: none;
+}
+.backgroundOptions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    box-shadow: 0 2px 5px 3px var(--dark-green);
+    padding: .3rem .5rem;
+    border-radius: .5rem;
+    width: max-content;
+    z-index: 2;
+    position: absolute;
+    background-color: var(--primary);
+}
+.bgOption {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    cursor: pointer;
+    box-sizing: border-box;
+    appearance: none;
+}
+.bgOption:checked {
+    appearance: none;
+    border: 2.5px solid var(--mild-grey);
+    box-sizing: border-box;
+}
+.bgOption:hover {
+    border: 2.5px solid var(--mild-grey);
+    box-sizing: border-box;
+}
+.bgOption.none {
+    background-color: transparent;
+    border: 1px solid var(--grey);
+    box-sizing: border-box;
+}
+.bgOption.peach {
+    background-color: #e6784f80;
+}
+.bgOption.green {
+    background-color: #345920;
+}
+.bgOption.blue {
+    background-color: #1e3a5f;
+}
+.bgOption.teal {
+    background-color: #16504b;
+}
+.bgOption.pink {
+    background-color: #5b2245;
+}
+.bgOption.red {
+    background-color: #5c2b29;
+}
+.bgOption.brown {
+    background-color: #442f19;
+}
+.bgOption.grey {
+    background-color: #3c3f43;
+}
+.bgOption.active {
+    border: 2px solid white;
+    box-sizing: border-box;
+}
