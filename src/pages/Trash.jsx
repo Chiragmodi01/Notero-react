@@ -4,7 +4,7 @@ import NoNotes from '../comps/NoNotes'
 import NoteCardTrash from '../comps/NoteCardTrash';
 
 function Trash( ) {
-  const {notesState, notesDispatch, search} = useNote();
+  const {notesState, notesDispatch, search, note} = useNote();
 
   useEffect(() => {
     search.length !== 0  && notesDispatch({type: 'SEARCH_NOTE_IN_TRASH', payload: search})
@@ -20,10 +20,10 @@ function Trash( ) {
                 {
                   notesState.filteredNotes.length === 0 ?
                   notesState.trash.map((note) => {
-                    return <NoteCardTrash note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
+                    return <NoteCardTrash color={note.color} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
                   }) :
                   notesState.filteredNotes.map((note) => {
-                    return <NoteCardTrash note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
+                    return <NoteCardTrash color={note.color} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
                   }) 
                 }
               </div>

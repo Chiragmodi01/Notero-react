@@ -4,6 +4,9 @@ const notesReducer = (notesState, { type, payload}) => {
         case'ADD_NOTE':
         return { ...notesState, notes: [...payload.note]}
 
+        case'EDIT_NOTE':
+        return { ...notesState, notes: [...payload.note]}
+
         case'ARCHIVE_NOTE':
         return { ...notesState, notes: [...payload.note], archives: [...payload.archiveNote]}
 
@@ -29,6 +32,7 @@ const notesReducer = (notesState, { type, payload}) => {
         return { ...notesState, trash: notesState.trash.filter((item) => item._id !== payload._id)}
 
         case'SEARCH_NOTE':
+        if(payload === '') return {...notesState, filteredNotes: []};
         return {...notesState, filteredNotes: notesState.notes.filter((note) => 
                  note.title.toLowerCase().includes(payload.toLowerCase()) ||
                  note.desc.toLowerCase().includes(payload.toLowerCase())
@@ -45,6 +49,24 @@ const notesReducer = (notesState, { type, payload}) => {
                     note.title.toLowerCase().includes(payload.toLowerCase()) ||
                     note.desc.toLowerCase().includes(payload.toLowerCase())
             )}
+
+        case'SORT_NEW_FIRST':
+        return {
+            ...notesState, notes: notesState.notes.sort(function(a,b){
+                var dateA = new Date(a.editedAt).getTime();
+                var dateB = new Date(b.editedAt).getTime();
+                return dateB > dateA ? 1 : -1;  
+              })
+        }
+
+        case'SORT_OLD_FIRST':
+        return {
+            ...notesState, notes: notesState.notes.sort(function(a,b){
+                var dateA = new Date(a.editedAt).getTime();
+                var dateB = new Date(b.editedAt).getTime();
+                return dateA > dateB ? 1 : -1;  
+              })
+        }
     }
 
 }

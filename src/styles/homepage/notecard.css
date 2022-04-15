@@ -4,7 +4,6 @@
     font-size: .9rem;
     color: var(--light-grey);
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     gap: 1rem;
     width: 15rem;
@@ -32,6 +31,7 @@
     justify-content: flex-start;
     text-align: start;
     line-height: 1rem;
+    font-size: 1.1rem;
 }
 .noteCard_bottom {
     width: 100%;
@@ -44,6 +44,9 @@
     visibility: hidden;
 }
 .NoteCard:hover .noteCard_bottom {
+    visibility: visible;
+}
+.noteCard_bottom-visible {
     visibility: visible;
 }
 .noteCard_icon {

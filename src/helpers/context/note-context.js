@@ -11,7 +11,9 @@ function NoteProvider({ children }) {
         title: "",
         desc: "",
         pin: false,
-        editedAt: ''
+        editedAt: '',
+        edit: false,
+        color: ''
       });
 
     const [ search, setSearch ] = useState("");
@@ -24,7 +26,8 @@ function NoteProvider({ children }) {
     const [utilsState, utilsDispatch] = useReducer(utilsReducer, {
         hideAside: false,
         pinNote: false,
-        darkTheme: true
+        darkTheme: true,
+        showBgOptions: false
     })
 
     const [notesState, notesDispatch] = useReducer(notesReducer, {

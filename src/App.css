@@ -40,7 +40,9 @@
 .App-light .ham-menu_icon:hover {
   background-color: #c6d9e25b;
 }
-
+.App-light .backgroundOptions {
+  box-shadow: 0 2px 5px 3px var(--light-green);
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

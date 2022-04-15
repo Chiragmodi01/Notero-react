@@ -4,7 +4,7 @@ import NoNotes from '../comps/NoNotes'
 import NoteCardArchive from '../comps/NoteCardArchive';
 
 function Archive( ) {
-  const {notesState, notesDispatch, search} = useNote();
+  const {notesState, notesDispatch, search, note} = useNote();
 
   useEffect(() => {
     search.length !== 0 && notesDispatch({type: 'SEARCH_NOTE_IN_ARCHIVES', payload: search})
@@ -20,10 +20,10 @@ function Archive( ) {
                 {
                   notesState.filteredNotes.length === 0 ?
                   notesState.archives.map((note) => {
-                    return <NoteCardArchive note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
+                    return <NoteCardArchive color={note.color} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
                   }) :
                   notesState.filteredNotes.map((note) => {
-                    return <NoteCardArchive note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
+                    return <NoteCardArchive color={note.color} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
                   }) 
                 }
               </div>

@@ -1,9 +1,11 @@
 .CreateNotes {
     grid-row: 1 / span 1;
     display: flex;
+    gap: .5rem;
     align-items: center;
     justify-content: center;
     height: auto;
+    width: 100%;
 }
 .takeNotes_wrapper {
     display: flex;
@@ -49,6 +51,8 @@
     color:var(--light-grey);
 }
 .createNote_head {
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
     width: 100%;
     padding: .5rem;
     padding-left: 1rem;
@@ -90,6 +94,8 @@
     font-weight: 500;
 }
 .createNote_bottom {
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
     display: flex;
     align-items: flex-start;
     align-items: center;

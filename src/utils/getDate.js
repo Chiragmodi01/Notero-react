@@ -11,7 +11,7 @@ function GetCurrentDate () {
 
     return (
         <div className="GetTime-wrapper">
-            <p>Edited: {currentDate} {currentDay}</p> | <Moment date={currentTime} format="hh:mm" trim />
+            <p>Edited: {currentDate} {currentDay}</p> | <Moment date={currentTime} format="hh:mm:ss" trim />
         </div>
     )
 }

@@ -4,3 +4,4 @@ export {unarchiveNoteService} from './unarchiveNoteService';
 export {getNotesService} from './getNoteService';
 export {deleteNoteService} from './deleteNoteService';
 export {deleteFromArchiveService} from './deleteFromArchiveService';
+export {editNoteService} from './editNoteService';

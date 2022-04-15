@@ -6,23 +6,23 @@ import { useNote } from '../helpers/context/note-context';
 import GetCurrentDate from '../utils/getDate';
 import { unarchiveNoteService, deleteFromArchiveService } from '../helpers/services/index';
 
-function NoteCardArchive({ id, title, desc, pin, note }) {
+function NoteCardArchive({ id, title, desc, pin, note, color }) {
 
-  const { notesDispatch, setNote } = useNote();
+  const { notesDispatch } = useNote();
 
 
   const deleteNoteHandler = () => {
     console.log('Your note moved to trash');
-    deleteFromArchiveService(notesDispatch, {...note, editedAt: new Date()}, setNote)
+    deleteFromArchiveService(notesDispatch, {...note, editedAt: new Date()})
   }
 
   const restoreArchiveHandler = () => {
     console.log('Note succesfully unarchived!');
-    unarchiveNoteService(notesDispatch, {...note, editedAt: new Date()}, setNote)
+    unarchiveNoteService(notesDispatch, {...note, editedAt: new Date()})
   }
 
   return (
-    <div className='NoteCard' key={id}>
+    <div className='NoteCard' key={id} style={{backgroundColor: color}}>
         <div className="noteCard_head">
           <h3 className='noteCard_head_title'>{title}</h3>
           { pin ? <BsPinFill size="1.4em" className='noteCard_icon' title="Unpin note"/> :
