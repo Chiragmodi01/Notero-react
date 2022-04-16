@@ -18,7 +18,6 @@ function Navbar( ) {
     const msgDark = "✨ God bless your precious eyes!";
     !utilsState.darkTheme && toast(msgDark);
     utilsState.darkTheme && toast.warning(msgLight);
-    // toast(utilsState.darkTheme ? msgLight: msgDark);
   }
     
   return (
