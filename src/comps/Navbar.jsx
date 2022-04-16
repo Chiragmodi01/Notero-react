@@ -1,33 +1,24 @@
-import React, { useState, useRef } from 'react'
+import React  from 'react'
 import '../styles/homepage/navbar.css'
-import { BsFilter } from 'react-icons/bs';
-import { FiSearch } from 'react-icons/fi';
-import { GrDocumentNotes } from 'react-icons/gr';
-import { IoMdMenu } from 'react-icons/io';
+import { IoMdMenu, GrDocumentNotes, FiSearch, BsFilter, BsSun, BsMoon } from '../utils/getIcons';
 import { useNote } from '../helpers/context/note-context';
-import { BsSun, BsMoon } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import Filters from '../comps/Filters';
+import { toast } from 'react-toastify';
 
 function Navbar( ) {
-  const { utilsState, utilsDispatch, search, setSearch } = useNote();
+  const { utilsState, utilsDispatch, search, setSearch, searchFocusRef } = useNote();
   let navigate = useNavigate();
+  
 
-  const [showFilters, setShowFilters] = useState(false);
-
-  const [searchFocus, setSearchFocus] = useState(false)
-  const searchFocusRef = useRef(null)
-
-  const focusSearchHandler = (e) => {
-    searchFocusRef.current.contains(e.target) ?
-    setSearchFocus(true) : setSearchFocus(false)
-  }
 
   const themeClickHandler = () => {
     utilsDispatch({type: 'CHANGE_THEME'})
     const msgLight = "Ew, you're using light mode!";
-    const msgDark = "God bless your precious eyes!";
-    console.log(utilsState.darkTheme ? msgLight: msgDark);
+    const msgDark = "✨ God bless your precious eyes!";
+    !utilsState.darkTheme && toast(msgDark);
+    utilsState.darkTheme && toast.warning(msgLight);
+    // toast(utilsState.darkTheme ? msgLight: msgDark);
   }
     
   return (
@@ -39,11 +30,11 @@ function Navbar( ) {
         </div>
         <div className="navbar_right">
         <div className='searchbox'>
-            <FiSearch size='1.4em' className={searchFocus ? 'search-icon dark': 'search-icon'}/>
-            <input value={search} type="text" className={searchFocus ? 'search-input dark': 'search-input'} placeholder='Search' ref={searchFocusRef} onClick={(e) => focusSearchHandler(e)} onChange={(e) => setSearch(e.target.value)}/>
+            <FiSearch size='1.4em' className={utilsState.focusSearchInput ? 'search-icon dark': 'search-icon'}/>
+            <input value={search} type="text" className={utilsState.focusSearchInput ? 'search-input dark': 'search-input'} placeholder='Search' ref={searchFocusRef} onClick={() => utilsDispatch({type: 'FOCUS_SEARCH_INPUT'})} onChange={(e) => setSearch(e.target.value)}/>
             <span className="navbar_filters_container">
-              <BsFilter title='Filters' size="2em" className={searchFocus ? 'filter-icon dark': 'filter-icon'} onClick={() => setShowFilters(prev => !prev)}/>
-              {showFilters && <Filters />}
+              <BsFilter title='Filters' size="2em" className={utilsState.focusSearchInput ? 'filter-icon dark': 'filter-icon'} onClick={() => utilsDispatch({type: 'SHOW_FILTER_OPTIONS'})}/>
+              {utilsState.showFilterOptions && <Filters />}
             </span>
         </div>
         {utilsState.darkTheme && <BsSun title="Light theme" size='1.7em' className='ham-menu_icon theme' onClick={() =>themeClickHandler()}/>}

@@ -1,23 +1,23 @@
 import React from 'react'
 import '../styles/homepage/notecard.css'
-import { MdOutlineLabel, MdOutlineDelete, MdOutlineUnarchive, MdOutlineDateRange } from 'react-icons/md';
-import { BsPin, BsPinFill } from 'react-icons/bs'
+import { BsPin, BsPinFill, MdOutlineLabel, MdOutlineDelete, MdOutlineUnarchive, MdOutlineDateRange } from '../utils/getIcons'
 import { useNote } from '../helpers/context/note-context';
 import GetCurrentDate from '../utils/getDate';
 import { unarchiveNoteService, deleteFromArchiveService } from '../helpers/services/index';
+import { toast } from 'react-toastify';
 
-function NoteCardArchive({ id, title, desc, pin, note, color }) {
+function NoteCardArchive({ id, title, desc, pin, note, color, label}) {
 
   const { notesDispatch } = useNote();
 
 
   const deleteNoteHandler = () => {
-    console.log('Your note moved to trash');
+    toast.success('Your note moved to trash');
     deleteFromArchiveService(notesDispatch, {...note, editedAt: new Date()})
   }
 
   const restoreArchiveHandler = () => {
-    console.log('Note succesfully unarchived!');
+    toast.success('Note succesfully unarchived!');
     unarchiveNoteService(notesDispatch, {...note, editedAt: new Date()})
   }
 
@@ -29,8 +29,13 @@ function NoteCardArchive({ id, title, desc, pin, note, color }) {
             <BsPin size="1.4em" className='noteCard_icon' title="Pin note"/>}
         </div>
         <div className="noteCard_mid">
-        <h3 className='noteCard_head_desc'>{desc}</h3>
+          <h3 className='noteCard_head_desc'>{desc}</h3>
         </div>
+        {note.label && <div className="noteCard_label">
+          <div className="noteCard_label-chip">
+            {label}
+          </div>
+        </div>}
         <div className="noteCard_bottom">
           <MdOutlineUnarchive title="Unarchive" className='noteCard_icon' size='1.3em' onClick={restoreArchiveHandler} />
           <MdOutlineLabel title="Add label" className='noteCard_icon' size='1.3em' />

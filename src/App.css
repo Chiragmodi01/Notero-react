@@ -3,7 +3,8 @@
 
 .App {
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   font-family: 'Roboto', sans-serif;
   display: grid;
   grid-template-rows: auto 2fr;
@@ -12,36 +13,23 @@
 }
 
 .App-light {
-  --primary: #FFF;
-  --secondary: rgba(128, 128, 128, 0.781);
-  --light-green: #c6d9e2b0;
-  --mild-green: #33926a23;
-  --mild-grey: #06603b;
-  --grey: #2a7857;
-  --light-grey: #064f32d8;
+  --dark-green: #FFF;
+  --light-green: #c6d9e2;
   --shadow-green: #06603a44;
-  --accent: #00ffff;
-  --accent-light: #00ffff6c;
-  --accent-mild: #00ffff1f ;
+  --light-grey: #2a7857;
+  --mild-grey: #06603b;
 }
-.App-light .takeNotes_wrapper, .App-light .createNote_wrapper{
-  border: none;
-  color: var(--light-grey);
+.App-light .backgroundOptions , .LabelOptions {
+  color: #f9fbfc;
+  background-color: var(--mild-green);
 }
-.App-light .search-input::placeholder{
-  color: var(--grey);
+.App-light .LabelOptions {
+  /* box-shadow: 0 2px 5px 3px var(--light-green); */
+  background-color: var(--mild-green);
+  color: #f9fbfc;
 }
-.App-light .Navbar {
-  border-color: #c6d9e2;
-}
-.App-light .NoNotes_desc {
-  color: grey;
-}
-.App-light .ham-menu_icon:hover {
-  background-color: #c6d9e25b;
-}
-.App-light .backgroundOptions {
-  box-shadow: 0 2px 5px 3px var(--light-green);
+.App-light .bgOption.none, .App-light .bgOption:hover, .App-light .bgOption.active, .App-light .bgOption:checked {
+  border-color: #f9fbfc;
 }
 .App-logo {
   height: 40vmin;
@@ -100,8 +88,8 @@ a {
 }
 
 ::-webkit-scrollbar{
-  width: 0.7rem;
-  background-color: var(--primary);
+  width: 0.6rem;
+  background-color: var(--dark-green);
 }
 ::-webkit-scrollbar-thumb{
   background: var(--light-green);
@@ -109,5 +97,5 @@ a {
   filter: none;
 }
 ::-webkit-scrollbar-thumb:hover{
-  background: var(--mild-green);
+  background: var(--light-green);
 }

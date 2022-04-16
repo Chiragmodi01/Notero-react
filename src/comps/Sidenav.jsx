@@ -1,10 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import '../styles/homepage/sidenav.css'
-import { AiOutlineHome } from 'react-icons/ai';
-import { MdOutlineArchive, MdOutlineDelete, MdOutlineLabel } from 'react-icons/md';
-import { BiUser } from 'react-icons/bi';
-import { IoExitOutline } from 'react-icons/io5';
+import { AiOutlineHome, MdOutlineArchive, MdOutlineDelete, MdOutlineLabel, BiUser, IoExitOutline } from '../utils/getIcons';
 import { useNote } from '../helpers/context/note-context';
 
 function Sidenav( ) {

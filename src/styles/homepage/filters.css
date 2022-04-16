@@ -23,7 +23,7 @@
     align-items: center;
     justify-content: center;
 }
-.sort-date-input {
+.sort-date-input, .filter-label-input {
     margin: 0;
     margin-right: 5px;
 }
@@ -34,4 +34,12 @@
     justify-content: center;
     gap: .5rem;
     font-size: .9rem;
+    padding-bottom: 1.5rem;
+}
+.labelOptions-item-text.clear {
+    border-bottom: 1px solid var(--light-grey);
+    cursor: pointer;
+}
+.labelOptions-item-text.clear:hover {
+    border-color: var(--secondary);
 }

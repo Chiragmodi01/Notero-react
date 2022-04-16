@@ -1,13 +1,13 @@
 import React, { useRef } from 'react'
 import '../styles/homepage/create_notes.css'
-import { MdOutlineLabel } from 'react-icons/md';
-import { IoColorPaletteOutline } from 'react-icons/io5';
-import { AiOutlineClear } from 'react-icons/ai'
-import { BsPin, BsPinFill } from 'react-icons/bs'
+import { MdOutlineLabel } from '../utils/getIcons';
+import { IoColorPaletteOutline, AiOutlineClear,BsPin, BsPinFill } from '../utils/getIcons';
 import TextareaAutosize from 'react-textarea-autosize';
 import { useNote } from '../helpers/context/note-context';
 import { postNoteService, editNoteService } from '../helpers/services/index';
 import BackgroundOptions from '../comps/BackgroundOptions';
+import LabelOptions from '../comps/LabelOptions';
+import { toast } from 'react-toastify';
 
 function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
 
@@ -21,6 +21,7 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
     e.preventDefault();
     setCreateNote(false);
     utilsDispatch({type: 'HIDE_BG_OPTIONS'});
+    utilsDispatch({type: 'HIDE_LABEL_OPTIONS'});
   }
 
   
@@ -29,11 +30,13 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
     const updatedTitle = note?.title?.length === 0 ? 'Untitled' : note.title;
 
     if(note.desc === ""){
-      alert("Note Content cannot be empty!");
+      toast.error("Note Content cannot be empty!");
     } else {
+      toast.success("Note succesfully added!");
       postNoteService(notesDispatch, {...note, title: updatedTitle, editedAt: new Date()})
       setCreateNote(false);
       utilsDispatch({type: 'HIDE_BG_OPTIONS'});
+      utilsDispatch({type: 'HIDE_LABEL_OPTIONS'});
     }
   }
   
@@ -54,6 +57,13 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
 
   const showBgOptionsHandler = () => {
     utilsDispatch({type: 'SHOW_BG_OPTIONS'})
+    utilsDispatch({type: 'HIDE_LABEL_OPTIONS'})
+  }
+  
+  
+  const showLabelOptionsHandler = () => {
+    utilsDispatch({type: 'SHOW_LABEL_OPTIONS'})
+    utilsDispatch({type: 'HIDE_BG_OPTIONS'})
   }
 
   const addEditedNote = (e) => {
@@ -61,16 +71,16 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
 
     e.preventDefault();
     if(note.desc === ""){
-      alert("Note Content cannot be empty!");
+      toast.error("Note Content cannot be empty!");
     } else {
-      console.log('Note succesfully edited!')
+      toast.success('Note succesfully edited!');
       editNoteService(notesDispatch, {...note, title: updatedTitle, editedAt: new Date()})
       setCreateNote(false);
-      utilsDispatch({type: 'SHOW_BG_OPTIONS'})
+      utilsDispatch({type: 'HIDE_LABEL_OPTIONS'});
+      utilsDispatch({type: 'HIDE_BG_OPTIONS'});
     }
   }
 
-  console.log(createNote)
 
 
   return (
@@ -91,12 +101,15 @@ function CreateNotes({ createNote, setCreateNote, createNoteRef }) {
           </div>
           <div className="createNote_bottom">
             <div className="createNotes_bottom_left">
-              <span>
+              <span className='icon-span'>
                 <IoColorPaletteOutline className='createNote_icon' size='1.3em' title="Background options" onClick={showBgOptionsHandler}/>
                 <BackgroundOptions showBgOptions={utilsState.showBgOptions} fromCreateNote={fromCreateNote} note={note}/>
               </span>
               <AiOutlineClear className='createNote_icon' size='1.3em' title="Clear note" onClick={(e) => clearNote(e)}/>
-              <MdOutlineLabel className='createNote_icon' size='1.3em' title="Add label"/>
+              <span className='icon-span'>
+                <MdOutlineLabel className='createNote_icon' size='1.3em' title="Add label" onClick={showLabelOptionsHandler}/>
+                {createNote && <LabelOptions showLabelOptions={utilsState.showLabelOptions} fromCreateNote={fromCreateNote} note={note}/>}
+              </span>
             </div>
             <div className="createNotes_bottom_right">
               <button className='createNotes_btn btn-close' onClick={(e) => closeNoteHandler(e)}>Close</button>

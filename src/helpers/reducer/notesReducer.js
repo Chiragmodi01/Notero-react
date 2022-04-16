@@ -67,6 +67,12 @@ const notesReducer = (notesState, { type, payload}) => {
                 return dateA > dateB ? 1 : -1;  
               })
         }
+
+        case'FILTER_LABEL':
+        return { ...notesState, filteredNotes: notesState.notes.filter((item) => item.label === payload ) }
+
+        case'FILTER_LABEL_CLEAR':
+        return { ...notesState, filteredNotes: [] }
     }
 
 }

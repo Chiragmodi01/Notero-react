@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState, useEffect } from 'react';
+import { createContext, useContext, useReducer, useState, useEffect, useRef } from 'react';
 import { notesReducer } from '../reducer/notesReducer';
 import { utilsReducer } from '../reducer/utilsReducer';
 import { getNotesService } from '../services/getNoteService';
@@ -7,14 +7,20 @@ const NoteContext = createContext()
 
 function NoteProvider({ children }) {
     
+    const searchFocusRef = useRef(null)
+    
     const [ note, setNote ] = useState({
         title: "",
         desc: "",
         pin: false,
         editedAt: '',
         edit: false,
-        color: ''
+        color: '',
+        label: ''
       });
+
+    const [ label, setLabel ] = useState('');
+    const [ labelsList, setLabelsList ] = useState(['Label 1'])
 
     const [ search, setSearch ] = useState("");
 
@@ -27,7 +33,10 @@ function NoteProvider({ children }) {
         hideAside: false,
         pinNote: false,
         darkTheme: true,
-        showBgOptions: false
+        showBgOptions: false,
+        showLabelOptions: false,
+        showFilterOptions: false,
+        focusSearchInput: false
     })
 
     const [notesState, notesDispatch] = useReducer(notesReducer, {
@@ -39,7 +48,7 @@ function NoteProvider({ children }) {
     })
 
     return (
-        <NoteContext.Provider value={{ notesState, notesDispatch, note, setNote, utilsState, utilsDispatch, search, setSearch }}>
+        <NoteContext.Provider value={{ notesState, notesDispatch, note, setNote, utilsState, utilsDispatch, search, setSearch, label, setLabel, labelsList ,setLabelsList, searchFocusRef }}>
             {children}
         </NoteContext.Provider>
     )

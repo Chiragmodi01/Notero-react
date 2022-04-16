@@ -5,7 +5,6 @@
     color: var(--light-grey);
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
     width: 15rem;
     min-height: 8rem;
     border-radius: .5rem;
@@ -15,6 +14,7 @@
 .noteCard_head {
     font-weight: 500;
     justify-content: space-between;
+    padding-bottom: .4rem;
 }
 .noteCard_head, .noteCard_mid {
     width: 100%;
@@ -32,6 +32,7 @@
     text-align: start;
     line-height: 1rem;
     font-size: 1.1rem;
+    padding-bottom: 1.5rem;
 }
 .noteCard_bottom {
     width: 100%;
@@ -53,7 +54,25 @@
     padding: .5rem;
     cursor: pointer;
 }
+.icon-span {
+    display: inline-flex;
+    position: relative;
+}
 .noteCard_icon:hover {
     background-color: var(--light-green);
     border-radius: 100%;
+}
+.noteCard_label {
+    padding-left: .25rem;
+    width: 100%;
+    padding-bottom: .5rem;
+}
+.noteCard_label-chip {
+    min-width: 2rem;
+    max-width: max-content;
+    border: 1px solid var(--grey);
+    color: var(--mild-grey);
+    font-size: .73rem;
+    padding: .3rem .5rem;
+    border-radius: .7rem
 }
