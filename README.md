@@ -1,70 +1,147 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# <img src="/public/assets/ogimage.svg" width="45" height="45" alt="notero-logo" />   Notero
 
-In the project directory, you can run:
+One-stop solution to manage your notes and tasks
 
-### `yarn start`
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bcf3747f-f381-4610-ad27-f6b31e3431c1/deploy-status)](https://app.netlify.com/sites/notero-v1/deploys)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+</div>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `yarn test`
+![image](https://user-images.githubusercontent.com/75688193/163706371-85711b70-a35e-4104-8488-b8fe0a62f0ca.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technology Stack
 
-### `yarn eject`
+- [ReactJS](https://reactjs.org/)
+- [BelugaUI](https://beluga-ui.netlify.app/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+$ git clone https://github.com/desaihetav/notes-hd.git
+$ cd notes-hd
+$ npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Start and Watch
+```
+$ npm start
+```
 
-## Learn More
+--- 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### <ins> Create Note: </ins>
+  - User can create a new note
+  - User add color
+  - User can add label
+  - User can pin note
 
-### Analyzing the Bundle Size
+<details><summary>Show video Preview</summary>
+  
+  
+![create-note-preview](https://user-images.githubusercontent.com/75688193/163710611-67f56dd7-3754-4e12-9961-6d1ceda9a038.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+</details>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### <ins> Edit Note: </ins>
+  - User can change note's color
+  - User can edit note
+  - User can add/remove label
+  - User can pin/unpin note
 
-### Deployment
+<details><summary>Show video Preview</summary>
+  
+  
+![edit-note-preview](https://user-images.githubusercontent.com/75688193/163710657-4473725b-4859-400d-a8c4-bc8ea38d673f.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `yarn build` fails to minify
+</details>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### <ins> Move Note: </ins>
+  - User can move note to archive and unarchive it
+  - User can move note to trash and retsore it
+  - User can permanently delete note
+
+<details><summary>Show video Preview</summary>
+
+  
+![move-note-preview](https://user-images.githubusercontent.com/75688193/163710680-30011225-8a10-43a7-94ad-270dda7fc512.gif)
+
+  
+</details>
+
+
+
+### <ins> Labels: </ins>
+
+  - User can add new labels
+  - User can delete added labels
+
+<details><summary>Show video Preview</summary>
+  
+  
+![labels-preview](https://user-images.githubusercontent.com/75688193/163711033-51d3ded5-b9fc-4fbf-abc5-4711c67351e1.gif)
+
+
+</details>
+
+
+
+### <ins> Search & Filters: </ins>
+
+  - User can search any note
+  - User can sort note's by newest/oldest first
+  - User can filters notes by label
+  - User can clear filter
+
+<details><summary>Show video Preview</summary>
+
+  
+ ![filters-preview](https://user-images.githubusercontent.com/75688193/163711128-2dbec0df-971a-442d-a8ee-044d3b9f8ddd.gif)  
+  
+
+</details>
+
+
+
+### <ins> Theme: </ins>
+
+  - User can use dark and light themes
+
+<details><summary>Show video Preview</summary>
+
+  
+  ![theme-preview](https://user-images.githubusercontent.com/75688193/163711155-4aa876b9-abb5-4142-a3d7-08de3d44d866.gif)
+  
+
+</details>
+
+<br/>
+
+
+---
+
+
+
+## 👨‍💻 Connect with me
+
+<a href="https://twitter.com/ChiragM2020"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"/></a>
+<a href="https://www.linkedin.com/in/chirag-modi-582655202/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
