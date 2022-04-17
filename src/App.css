@@ -24,7 +24,6 @@
   background-color: var(--mild-green);
 }
 .App-light .LabelOptions {
-  /* box-shadow: 0 2px 5px 3px var(--light-green); */
   background-color: var(--mild-green);
   color: #f9fbfc;
 }

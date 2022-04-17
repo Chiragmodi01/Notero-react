@@ -45,7 +45,7 @@ function CreateLabels() {
                   <MdDelete title="Delete label" size='1.3em' className='label-item-icon trash' onClick={() => removeLabelHandler(item)} />
                 </span>
                 <span className="label-item-container-right">
-                  <h3 className="lbel-item-text">{item}</h3>
+                  <h3 className="label-item-text">{item}</h3>
                 </span>
               </div>
             )
