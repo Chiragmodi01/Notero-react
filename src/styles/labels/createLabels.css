@@ -1,0 +1,92 @@
+.createLabels {
+    display: flex;
+    height: auto;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: .5rem;
+    border: 1px solid var(--dark-grey);
+    box-shadow: 0 1px 10px 2px var(--shadow-green);
+    color: var(--light-grey);
+    width: 35rem;
+}
+.createLabels_input-wrapper {
+    display: flex;
+    text-align: start;
+    cursor: text;
+    width: 100%;
+    border-bottom: 1px solid var(--dark-grey);
+    padding: 5px;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+}
+.labels-list-wrapper {
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+.createLabels_input {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    color: var(--light-grey);
+    font-weight: 500;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+.createLabels_input::placeholder {
+    color: var(--light-grey);
+}
+.createLabels-icon {
+    cursor: pointer;
+    padding: .35rem;
+    height: 1.65rem;
+    width: 1.8rem;
+}
+.createLabels-icon:hover {
+    background-color: var(--light-green);
+    border-radius: 100%;
+}
+
+.label-item-icon {
+    cursor: pointer;
+    padding: 4px;
+}
+.label-item-icon:hover {
+    background-color: var(--light-green);
+    border-radius: 100%;
+}
+.label-item-icons-container {
+    height: 28.8px;
+}
+
+.label-item-icons-container > .label-item-icon + .label-item-icon,
+.label-item-icons-container:hover > .label-item-icon {
+  display: none;
+}
+.label-item-icons-container:hover > .label-item-icon + .label-item-icon {
+  display: inherit;
+}
+
+.label-item-wrapper {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .5rem;
+    padding: 5px 0;
+    width: 100%;
+}
+.label-item-container-right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -5,6 +5,7 @@
     width: auto;
     max-width: 100%;
     color: var(--mild-grey);
+    background-color: var(--dark-green);
 }
 
 .sidenav_container {

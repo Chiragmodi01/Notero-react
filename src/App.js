@@ -6,15 +6,19 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./comps/Navbar";
 import Sidenav from "./comps/Sidenav";
 import { useNote } from "./helpers/context/note-context";
+import Toast from './comps/Toast';
 
 function App() {
 
   const { utilsState } = useNote();
 
   return (
+    <>
+    <Toast />
     <div className={utilsState.darkTheme ? "App": "App-light App"}>
       <Navbar />
       <Sidenav />
+    
 
       <Routes>
         <Route path="/" element={<Homepage />}/>
@@ -24,6 +28,7 @@ function App() {
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>
+    </>
   );
 }
 

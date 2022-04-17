@@ -9,7 +9,6 @@ const archiveNoteService = async(notesDispatch, note) => {
     const noteToSend = {note : note}
     try {
         const res = await axios.post(`/api/notes/archives/${note._id}` , noteToSend, {headers: Headers});
-        console.log(res)
         notesDispatch({ type: "ARCHIVE_NOTE", payload: {note: res.data.notes, archiveNote: res.data.archives}})
     } catch(e) {
         console.log(e.message)

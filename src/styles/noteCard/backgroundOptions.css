@@ -12,6 +12,7 @@
     width: max-content;
     z-index: 2;
     position: absolute;
+    bottom: -45px;
     background-color: var(--primary);
 }
 .bgOption {

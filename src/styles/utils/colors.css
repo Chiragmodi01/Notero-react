@@ -1,7 +1,7 @@
 :root {
     --primary : #06603b; /* green */
     --dark-green : #064f32;
-    --shadow-green:#05432a;
+    --shadow-green: #043f27;
     --light-green: #2a7857;
     --mild-green: #33926b;
     --secondary: #4abf8e; /* mild green */
@@ -13,4 +13,20 @@
     --accent: #00ffff;
     --accent-light: #00ffff33; /* aqua blue */
     --accent-mild: rgba(0, 255, 255, 5%); /* aqua blue */
+}
+
+.dark-toast {
+    background: var(--primary);
+    color: var(--mild-grey);
+}
+.dark-toast svg {
+    color: var(--mild-grey);
+}
+
+.light-toast {
+    background: #dce8ed;
+    color: var(--dark-green);
+}
+.light-toast svg {
+    color: var(--dark-green);
 }

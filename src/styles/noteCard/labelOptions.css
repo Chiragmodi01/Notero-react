@@ -1,0 +1,25 @@
+.LabelOptions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: .7rem;
+    box-shadow: 0 2px 5px 3px var(--dark-green);
+    padding: .5rem .7rem;
+    border-radius: .5rem;
+    min-width: 8rem;
+    width: max-content;
+    z-index: 2;
+    position: absolute;
+    top: 35px;
+    background-color: var(--primary);
+}
+.labelOptions-item-text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px
+}
+.LabelOptions input {
+    margin: 0;
+}

@@ -1,15 +1,15 @@
 import React, { useEffect, useState, useRef } from 'react'
 import '../styles/homepage/notecard.css'
-import { MdOutlineArchive, MdOutlineLabel, MdOutlineDelete, MdOutlineEdit, MdOutlineDateRange } from 'react-icons/md';
-import { IoColorPaletteOutline } from 'react-icons/io5';
-import { BsPin, BsPinFill } from 'react-icons/bs'
+import { BsPin, BsPinFill, IoColorPaletteOutline, MdOutlineArchive, MdOutlineLabel, MdOutlineDelete, MdOutlineEdit, MdOutlineDateRange } from '../utils/getIcons';
 import { useNote } from '../helpers/context/note-context';
 import GetCurrentDate from '../utils/getDate';
-import { archiveNoteService, deleteNoteService, editNoteService } from '../helpers/services/index';
+import { archiveNoteService, deleteNoteService } from '../helpers/services/index';
 import BackgroundOptions from '../comps/BackgroundOptions';
+import LabelOptions from '../comps/LabelOptions';
 import {useOnClickOutside} from '../utils/useOnClickOutside';
+import { toast } from 'react-toastify';
 
-function NoteCard({ id, title, desc, pin, color, note, setCreateNote }) {
+function NoteCard({ id, title, desc, pin, color, note, setCreateNote, label }) {
 
 
   const fromCreateNote = false;
@@ -18,11 +18,15 @@ function NoteCard({ id, title, desc, pin, color, note, setCreateNote }) {
 
   const [showBgOptions, setShowBgOptions] = useState(false);
 
+  const [showLabelOptions, setShowLabelOptions] = useState(false);
+
   const closeBgOptionsHandler = () => {
     setShowBgOptions(false)
+    setShowLabelOptions(false)
   }
   
   const showBgOptionsRef = useOnClickOutside(closeBgOptionsHandler, showBgOptions);
+  const showLabelOptionsRef = useOnClickOutside(closeBgOptionsHandler, showLabelOptions);
 
   const notePinToggler = () => {
     let payload = notesState.notes.map((item) => {
@@ -32,12 +36,12 @@ function NoteCard({ id, title, desc, pin, color, note, setCreateNote }) {
   }
 
   const deleteNoteHandler = () => {
-    console.log('Your note moved to trash');
+    toast.success('Your note moved to trash');
     deleteNoteService(notesDispatch, {...note, editedAt: new Date()})
   }
 
   const archiveNoteHandler = () => {
-    console.log('Your note moved to archive');
+    toast.success('Your note moved to archive');
     archiveNoteService(notesDispatch, {...note, editedAt: new Date()})
   }
   
@@ -47,8 +51,11 @@ function NoteCard({ id, title, desc, pin, color, note, setCreateNote }) {
   }
 
   const showBgOptionsHandler = () => {
-    console.log(showBgOptions)
     setShowBgOptions(prev => !prev)
+  }
+
+  const showLabelOptionsHandler = () => {
+    setShowLabelOptions(prev => !prev)
   }
 
   return (
@@ -62,15 +69,23 @@ function NoteCard({ id, title, desc, pin, color, note, setCreateNote }) {
         <div className="noteCard_mid">
         <h3 className='noteCard_head_desc'>{desc}</h3>
         </div>
-        <div className={showBgOptions ? "noteCard_bottom noteCard_bottom-visible" : "noteCard_bottom"}>
-          <span ref={showBgOptionsRef}>
-          <IoColorPaletteOutline title="Background options" className='noteCard_icon' size='1.3em'
-          onClick={showBgOptionsHandler}
-          />
-          {showBgOptions && <BackgroundOptions showBgOptions={showBgOptions} note={note} fromCreateNote={fromCreateNote}/>}
+        {note.label && <div className="noteCard_label">
+          <div className="noteCard_label-chip">
+            {label}
+          </div>
+        </div>}
+        <div className={showBgOptions || showLabelOptions ? "noteCard_bottom noteCard_bottom-visible" : "noteCard_bottom"}>
+          <span className='icon-span' ref={showBgOptionsRef}>
+            <IoColorPaletteOutline title="Background options" className='noteCard_icon' size='1.3em'
+            onClick={showBgOptionsHandler}
+            />
+            {showBgOptions && <BackgroundOptions showBgOptions={showBgOptions} note={note} fromCreateNote={fromCreateNote}/>}
           </span>
           <MdOutlineArchive title="Archive" className='noteCard_icon' size='1.3em' onClick={archiveNoteHandler}/>
-          <MdOutlineLabel title="Add label" className='noteCard_icon' size='1.3em' />
+          <span className='icon-span' ref={showLabelOptionsRef}>
+            <MdOutlineLabel title="Add label" className='noteCard_icon' size='1.3em'onClick={showLabelOptionsHandler} />
+            {showLabelOptions && <LabelOptions showLabelOptions={showLabelOptions} note={note}/>}
+          </span>
           <MdOutlineDelete title="Delete" className='noteCard_icon' size='1.3em' onClick={deleteNoteHandler}/>
           <MdOutlineEdit title="Edit note" className='noteCard_icon' size='1.3em' onClick={editNoteHandler}/>
           <MdOutlineDateRange title={ <GetCurrentDate />} className='noteCard_icon' size='1.3em'/>

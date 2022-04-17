@@ -20,10 +20,10 @@ function Trash( ) {
                 {
                   notesState.filteredNotes.length === 0 ?
                   notesState.trash.map((note) => {
-                    return <NoteCardTrash color={note.color} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
+                    return <NoteCardTrash label={note.label} color={note.color} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
                   }) :
                   notesState.filteredNotes.map((note) => {
-                    return <NoteCardTrash color={note.color} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
+                    return <NoteCardTrash label={note.label} color={note.color} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt}/>
                   }) 
                 }
               </div>

@@ -7,7 +7,6 @@ const deleteNoteService = async(notesDispatch, note) => {
 
     try {
         const res = await axios.delete(`/api/notes/${note._id}`, {headers: Headers});
-        console.log(res.data.notes, 'post delete, notes')
         notesDispatch({ type: "DELETE_NOTE", payload: {note: res.data.notes, prevNote: note}})
     } catch(e) {
         console.log(e.message)

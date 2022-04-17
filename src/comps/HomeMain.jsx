@@ -6,17 +6,31 @@ import NoNotes from './NoNotes';
 import NoteCard from './NoteCard';
 
 function HomeMain( ) {
-  const { notesState, notesDispatch, search, setNote } = useNote()
-
+  const { notesState, notesDispatch, search, setNote, utilsDispatch, searchFocusRef } = useNote()
+  
   const [createNote, setCreateNote] = useState(false);
 
   const createNoteRef = useRef(null)
+
+  const focusSearchHandler = (e) => {
+    !searchFocusRef.current.contains(e.target) &&
+    utilsDispatch({type: 'UNFOCUS_SEARCH_INPUT'});
+  }
+
+  const closeFiltersOptions = (e) => {
+    utilsDispatch({type: 'HIDE_FILTER_OPTIONS'});
+  }
   
   const closeCreateNotes = (e) => {
     if(createNote && (!createNoteRef.current.contains(e.target))){
       setCreateNote(false)
+      utilsDispatch({type: 'HIDE_LABEL_OPTIONS'});
+      utilsDispatch({type: 'HIDE_BG_OPTIONS'});
     }
+    closeFiltersOptions(e);
+    focusSearchHandler(e);
   }
+
 
   
   useEffect(() => {
@@ -42,10 +56,10 @@ function HomeMain( ) {
                 {
                   notesState.filteredNotes.length === 0 ?
                   notesState.notes.map((note) => {
-                    return (note.pin && <NoteCard key={note._id} setCreateNote={setCreateNote} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt} color={note.color} showBgOptions={note.showBgOptions}/>)
+                    return (note.pin && <NoteCard label={note.label} key={note._id} setCreateNote={setCreateNote} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt} color={note.color} showBgOptions={note.showBgOptions}/>)
                   }) :
                   notesState.filteredNotes.map((note) => {
-                    return (note.pin &&<NoteCard key={note._id} setCreateNote={setCreateNote} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt} color={note.color} showBgOptions={note.showBgOptions}/>)
+                    return (note.pin &&<NoteCard label={note.label} key={note._id} setCreateNote={setCreateNote} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt} color={note.color} showBgOptions={note.showBgOptions}/>)
                   })
                 }
               </div>
@@ -55,10 +69,10 @@ function HomeMain( ) {
                 { 
                   notesState.filteredNotes.length === 0 ?
                   notesState.notes.map((note) => {
-                    return (!note.pin && <NoteCard key={note._id} setCreateNote={setCreateNote} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt} color={note.color}/>)
+                    return (!note.pin && <NoteCard label={note.label} key={note._id} setCreateNote={setCreateNote} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt} color={note.color}/>)
                   }) :
                   notesState.filteredNotes.map((note) => {
-                    return (!note.pin && <NoteCard key={note._id} setCreateNote={setCreateNote} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt} color={note.color}/>)
+                    return (!note.pin && <NoteCard label={note.label} key={note._id} setCreateNote={setCreateNote} note={note} title={note.title} desc={note.desc} id={note._id} pin={note.pin} editedAt={note.editedAt} color={note.color}/>)
                   }) 
                 }
                </div>

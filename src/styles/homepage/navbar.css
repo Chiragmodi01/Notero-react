@@ -2,14 +2,14 @@
     height: max-content;
     grid-column: 1 / -1;
     grid-row: 1 / span 1;
-    background-color: var(--primary);
+    background-color: var(--dark-green);
     color: var(--white);
     padding: .5rem 2rem;
     padding-left: 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border-bottom: 1px solid var(--grey);
+    border-bottom: 1px solid var(--light-green);
 }
 
 .navbar_left {
@@ -48,9 +48,11 @@
     justify-content: flex-start;
 }
 .search-input {
-    background-color: var(--mild-green);
+    background-color: var(--light-green);
     padding: 13px 40px;
     width: 30rem;
+    max-width: 30rem;
+    min-width: 15rem;
     border-radius: .5rem;
     outline: none;
     border: none;
