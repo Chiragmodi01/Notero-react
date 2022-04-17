@@ -43,13 +43,13 @@ $ npm start
 
 ## Features
 
-### <ins> Create Note: </ins>
+### Create Note:
   - User can create a new note
   - User add color
   - User can add label
   - User can pin note
 
-<details><summary>Show video Preview</summary>
+<details><summary><i>Show video Preview</i></summary>
   
   
 ![create-note-preview](https://user-images.githubusercontent.com/75688193/163710611-67f56dd7-3754-4e12-9961-6d1ceda9a038.gif)
@@ -59,13 +59,13 @@ $ npm start
 
 
 
-### <ins> Edit Note: </ins>
+### Edit Note:
   - User can change note's color
   - User can edit note
   - User can add/remove label
   - User can pin/unpin note
 
-<details><summary>Show video Preview</summary>
+<details><summary><i>Show video Preview</i></summary>
   
   
 ![edit-note-preview](https://user-images.githubusercontent.com/75688193/163710657-4473725b-4859-400d-a8c4-bc8ea38d673f.gif)
@@ -75,12 +75,12 @@ $ npm start
 
 
 
-### <ins> Move Note: </ins>
+### Move Note:
   - User can move note to archive and unarchive it
   - User can move note to trash and retsore it
   - User can permanently delete note
 
-<details><summary>Show video Preview</summary>
+<details><summary><i>Show video Preview</i></summary>
 
   
 ![move-note-preview](https://user-images.githubusercontent.com/75688193/163710680-30011225-8a10-43a7-94ad-270dda7fc512.gif)
@@ -90,12 +90,12 @@ $ npm start
 
 
 
-### <ins> Labels: </ins>
+### Labels:
 
   - User can add new labels
   - User can delete added labels
 
-<details><summary>Show video Preview</summary>
+<details><summary><i>Show video Preview</i></summary>
   
   
 ![labels-preview](https://user-images.githubusercontent.com/75688193/163711033-51d3ded5-b9fc-4fbf-abc5-4711c67351e1.gif)
@@ -105,14 +105,14 @@ $ npm start
 
 
 
-### <ins> Search & Filters: </ins>
+### Search & Filters:
 
   - User can search any note
   - User can sort note's by newest/oldest first
   - User can filters notes by label
   - User can clear filter
 
-<details><summary>Show video Preview</summary>
+<details><summary><i>Show video Preview</i></summary>
 
   
  ![filters-preview](https://user-images.githubusercontent.com/75688193/163711128-2dbec0df-971a-442d-a8ee-044d3b9f8ddd.gif)  
@@ -122,11 +122,11 @@ $ npm start
 
 
 
-### <ins> Theme: </ins>
+### Theme:
 
   - User can use dark and light themes
 
-<details><summary>Show video Preview</summary>
+<details><summary><i>Show video Preview</i></summary>
 
   
   ![theme-preview](https://user-images.githubusercontent.com/75688193/163711155-4aa876b9-abb5-4142-a3d7-08de3d44d866.gif)
