@@ -3,7 +3,7 @@ import '../styles/homepage/notecard.css'
 import { BsPin, BsPinFill, IoColorPaletteOutline, MdOutlineArchive, MdOutlineLabel, MdOutlineDelete, MdOutlineEdit, MdOutlineDateRange } from '../utils/getIcons';
 import { useNote } from '../helpers/context/note-context';
 import GetCurrentDate from '../utils/getDate';
-import { archiveNoteService, deleteNoteService } from '../helpers/services/index';
+import { archiveNoteService, deleteNoteService, editNoteService } from '../helpers/services/index';
 import BackgroundOptions from '../comps/BackgroundOptions';
 import LabelOptions from '../comps/LabelOptions';
 import {useOnClickOutside} from '../utils/useOnClickOutside';
@@ -28,11 +28,8 @@ function NoteCard({ id, title, desc, pin, color, note, setCreateNote, label }) {
   const showBgOptionsRef = useOnClickOutside(closeBgOptionsHandler, showBgOptions);
   const showLabelOptionsRef = useOnClickOutside(closeBgOptionsHandler, showLabelOptions);
 
-  const notePinToggler = () => {
-    let payload = notesState.notes.map((item) => {
-      return item._id === id ? {...item, pin: !item.pin} : item
-    })
-    notesDispatch({type: 'UPDATE_NOTE', payload: payload})
+  const notePinToggler = (e) => {
+    editNoteService(notesDispatch, {...note, pin: !note.pin });
   }
 
   const deleteNoteHandler = () => {
@@ -63,8 +60,8 @@ function NoteCard({ id, title, desc, pin, color, note, setCreateNote, label }) {
     <div className='NoteCard' key={id} style={{backgroundColor: color}}>
         <div className="noteCard_head">
           <h3 className='noteCard_head_title'>{title}</h3>
-          { pin ? <BsPinFill size="1.4em" className='noteCard_icon' title="Unpin note" onClick={() => notePinToggler()}/> :
-            <BsPin size="1.4em" className='noteCard_icon' title="Pin note" onClick={() => notePinToggler()}/>}
+          { pin ? <BsPinFill size="1.4em" className='noteCard_icon' title="Unpin note" onClick={(e) => notePinToggler(e)}/> :
+            <BsPin size="1.4em" className='noteCard_icon' title="Pin note" onClick={(e) => notePinToggler(e)}/>}
         </div>
         <div className="noteCard_mid">
         <h3 className='noteCard_head_desc'>{desc}</h3>
