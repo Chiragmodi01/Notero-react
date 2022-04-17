@@ -51,6 +51,7 @@ const notesReducer = (notesState, { type, payload}) => {
             )}
 
         case'SORT_NEW_FIRST':
+        console.log('trigger new')
         return {
             ...notesState, notes: notesState.notes.sort(function(a,b){
                 var dateA = new Date(a.editedAt).getTime();
@@ -60,6 +61,7 @@ const notesReducer = (notesState, { type, payload}) => {
         }
 
         case'SORT_OLD_FIRST':
+        console.log('trigger old')
         return {
             ...notesState, notes: notesState.notes.sort(function(a,b){
                 var dateA = new Date(a.editedAt).getTime();

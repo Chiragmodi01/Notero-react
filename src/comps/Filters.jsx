@@ -3,7 +3,7 @@ import { useNote } from '../helpers/context/note-context'
 import '../styles/homepage/filters.css'
 
 function Filters( ) {
-    const { notesDispatch, labelsList} = useNote();
+    const { notesDispatch, labelsList, note} = useNote();
 
   return (
       <div className="Filters">
